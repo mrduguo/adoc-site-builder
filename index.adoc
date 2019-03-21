@@ -1,0 +1,5 @@
+:page-layout: homepage
+
+= ADoc Site Builder
+
+Your stage to show craftsmanship ...

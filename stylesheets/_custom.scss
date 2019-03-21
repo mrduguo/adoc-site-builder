@@ -1,0 +1,60 @@
+body>div.container{
+  margin-bottom: 100px;
+}
+
+.title-area{
+
+  .name a.logo {
+    margin-left: 10px;
+  }
+  .name a.logo img {
+    width: 1em;
+  }
+
+  .name {
+    max-width: 800px;
+  }
+  .name a {
+    line-height: 45px;
+    font-size: 1.0625em;
+    margin: 0;
+    color:white;
+  }
+
+  .name a::after {
+    content: "›";
+    margin: 5px;
+  }
+  span.split{
+    color:white;
+    margin: 5px;
+  }
+
+}
+
+.github-search{
+  border: 0;
+  border-radius: 3px;
+  background-color:#3f4447;
+  font-family: "Open Sans", "DejaVu Sans", "Sans", sans-serif;
+}
+
+.github-search:focus{
+  border: 0;
+  background-color:white;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+  a.breadcrumb_anchor{
+    display: none;
+  }
+
+  .github-search{
+    width: 100%;
+    padding:5px 10px;
+  }
+
+}

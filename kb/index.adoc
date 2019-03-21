@@ -1,0 +1,16 @@
+:page-layout: index
+
+= Knowledge Base
+
+
+
+== Pages
+
+page_list_macro::/kb/[includeChild=true]
+
+
+== Reference Links
+
+* https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[AsciiDoc Syntax Quick Reference]
+* http://plantuml.com/[PlantUML Reference]
+* https://www.planttext.com/[PlantUML Online Editor]

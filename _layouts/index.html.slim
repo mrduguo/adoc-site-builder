@@ -1,0 +1,13 @@
+---
+layout: base
+---
+header
+  .row
+    .large-12.columns
+      h1=page.title
+      - if page.leadin
+        p.description=page.leadin
+.row
+  .large-12.columns.content
+    #content
+      =content

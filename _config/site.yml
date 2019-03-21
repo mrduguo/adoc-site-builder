@@ -1,0 +1,69 @@
+title: Asciidoctor
+description: An open source implementation of AsciiDoc in Ruby
+author: Asciidoctor Project
+git_url: 'https://github.com/mrduguo/adoc-site-builder'
+homepage:
+  list:
+    name: Knowledge Base
+    path: /kb/
+
+context_path: ''
+local_tz: Europe/Dublin
+disqus: asciidoctor
+disqus_generate_id: true
+disqus_developer: true
+asciidoctor:
+  :safe: :unsafe
+  :base_dir: null
+  :attributes:
+    allow-uri-read: ''
+    #cache-uri: ''
+    compat-mode: '@'
+    attribute-missing: 'warn'
+    relfileprefix: '../'
+    outfilesuffix: '/'
+    idprefix: ''
+    idseparator: '-'
+    icons: 'font'
+    sectanchors: ''
+    imagesoutdir: '/workspace/_site/images'
+    outdir: '/workspace/_tmp'
+    linkattrs: ''
+    #source-highlighter: 'highlight.js'
+    source-highlighter: 'coderay'
+    prewrap: null
+haml:
+  :ugly: true
+slim|html:
+  :format: :html
+# NOTE if no profile is specified, the first with a deploy config is selected
+profiles:
+  development:
+    deploy: null
+    #show_drafts: false
+  staging:
+    deploy: null
+  travis:
+    base_url: https://mrduguo.github.io/asciidoctor.org
+    context_path: '/asciidoctor.org'
+    asciidoctor:
+      :attributes:
+        imagesoutdir: '/home/travis/build/mrduguo/adoc-site-builder/_site/images'
+        outdir: '/home/travis/build/mrduguo/adoc-site-builder/_tmp'
+        imagesdir: '/asciidoctor.org/images'
+    disqus_developer: false
+    # long-hand form for Asciidoctor
+    google_analytics_account: UA-38215684-1
+    google_analytics:
+      account: UA-38215684-1
+    scss:
+      :line_numbers: false
+      :style: :compressed
+    #compass_output_style: compressed
+    # TODO enable minify once we verify it's working as expected
+    #minify: true
+    deploy:
+      host: github_pages
+      branch: gh-pages
+  production:
+    deploy: null

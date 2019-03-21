@@ -1,0 +1,15 @@
+= asciidoctor.org image:https://secure.travis-ci.org/mrduguo/adoc-site-builder.svg?branch=master["Build Status", link="https://travis-ci.org/mrduguo/adoc-site-builder"]
+
+A documentation system based on http://asciidoctor.org[Asciidoctor]. This project will publish an docker image which could be used to overlay with your documentation source code to generate a beautiful site.
+
+== Build Image Locally
+
+ docker build -t mrduguo/adoc-site-builder:latest -f Dockerfile .
+
+== Preview With The Image
+  docker run -it --name adoc-site-builder --rm -v $(pwd):/workspace -p 4242:4242 mrduguo/adoc-site-builder bundle exec rake preview
+
+Then you can preview at http://localhost:4242/[]
+
+== Build Site
+  docker run -it --name adoc-site-builder --rm -v $(pwd):/workspace mrduguo/adoc-site-builder
