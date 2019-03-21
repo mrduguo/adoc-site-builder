@@ -139,7 +139,7 @@ task :travis => :check do
 
   # TODO use the Git library for these commands rather than system
   # repo = %x(git config remote.origin.url).gsub(/^git:/, 'https:')
-  system "git remote set-url --push origin https://github.com/#{TRAVIS_REPO_SLUG}.git"
+  system "git remote set-url --push origin https://github.com/#{ENV['TRAVIS_REPO_SLUG']}.git"
   system 'git remote set-branches --add origin gh-pages'
   system 'git fetch -q'
   # FIXME don't need to set user.name & user.email if we encrypt token using intended author's GitHub identity
@@ -196,6 +196,8 @@ task :init do
       end
     end
     msg 'applied override', :info
+  else
+    msg 'no _override found', :info
   end
 end
 
