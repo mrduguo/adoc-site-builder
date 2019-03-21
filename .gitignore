@@ -1,6 +1,7 @@
 /_archive/
 /_site/
 /_tmp/
+/_override/
 /.awestruct/
 /.bundle/
 /.rbx/

@@ -122,7 +122,7 @@ task :deploy => [:push, :check] do
 end
 
 desc 'Generate site from Travis CI and, if not a pull request, publish site to production (GitHub Pages)'
-task :travis do
+task :travis => :check do
   # force use of bundle exec in Travis environment
   $use_bundle_exec = true
 
@@ -138,8 +138,8 @@ task :travis do
   require 'fileutils'
 
   # TODO use the Git library for these commands rather than system
-  repo = %x(git config remote.origin.url).gsub(/^git:/, 'https:')
-  system "git remote set-url --push origin #{repo}"
+  # repo = %x(git config remote.origin.url).gsub(/^git:/, 'https:')
+  system "git remote set-url --push origin https://github.com/#{TRAVIS_REPO_SLUG}.git"
   system 'git remote set-branches --add origin gh-pages'
   system 'git fetch -q'
   # FIXME don't need to set user.name & user.email if we encrypt token using intended author's GitHub identity
@@ -185,8 +185,11 @@ task :init do
   end
   if File.exist? '_override'
     Dir['_override/**'].each do |dir|
-      if ![
+      if dir=='_override/_override'
+        cp_r(Dir['_override/_override/**'], Dir["."])
+      elsif ![
           '_override/_site',
+          '_override/.gitignore',
           '_override/README.adoc',
       ].include? dir
         cp_r(Dir[dir], Dir["."])
