@@ -126,7 +126,6 @@ task :travis do
   # force use of bundle exec in Travis environment
   $use_bundle_exec = true
 
-  reject_trailing_whitespace
 
   # if this is a pull request, do a simple build of the site and stop
   if ENV['TRAVIS_PULL_REQUEST'].to_s.to_i > 0
@@ -376,17 +375,6 @@ def set_pub_dates(branch)
 
     if do_commit
       repo.push('origin', branch)
-    end
-  end
-end
-
-def reject_trailing_whitespace
-  Dir['**/*.adoc'].each do |file|
-    # Don't check external gems.
-    next if file =~ /^vendor\//
-    IO.readlines(file).each_with_index do |ln, i|
-      ln.chomp!
-      raise "#{file} contains trailing whitespace on line #{i + 1}" if ln =~ /\s+\Z/
     end
   end
 end
