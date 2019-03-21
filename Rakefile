@@ -185,7 +185,14 @@ task :init do
     ENV['GEM_HOME'] = '.bundle'
   end
   if File.exist? '_override'
-    cp_r(Dir['_override/**'], Dir["."])
+    Dir['_override/**'].each do |dir|
+      if ![
+          '_override/_site',
+          '_override/README.adoc',
+      ].include? dir
+        cp_r(Dir[dir], Dir["."])
+      end
+    end
     msg 'applied override', :info
   end
 end
