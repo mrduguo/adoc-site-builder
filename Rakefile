@@ -151,8 +151,6 @@ task :init do
         cp_r(Dir['_override/_override/**'], Dir["."])
       elsif ![
           '_override/_site',
-          '_override/.gitignore',
-          '_override/README.adoc',
       ].include? dir
         cp_r(Dir[dir], Dir["."])
       end
