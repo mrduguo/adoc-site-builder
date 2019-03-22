@@ -72,7 +72,7 @@ module Awestruct
         if isLast or path.eql?("/")
           ""
         else
-          " <a class='breadcrumb_anchor #{isLast ? "active" : ""}' href='#{site.base_url}#{path}'
+          " <a class='breadcrumb_anchor #{isLast ? "active" : ""}' href='#{site.context_path}#{path}'
         >#{page.title ? page.title : page.simple_name.capitalize }</a>"
         end
 

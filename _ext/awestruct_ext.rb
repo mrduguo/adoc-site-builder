@@ -4,7 +4,7 @@ require 'asciidoctor/extensions'
 require 'awestruct/handlers/template/asciidoc'
 require 'page_list_macro'
 require 'page_info_preprocessor'
-require 'draw_image_postprocessor'
+require 'files_postprocessor'
 
 # Monkeypatch the AsciidoctorTemplate class from Awestruct to register Asciidoctor::Document object in page context.
 # Remove this hack when issue [1] will be resolved and available in a release.
@@ -26,7 +26,7 @@ Asciidoctor::Extensions.register do
   end
   preprocessor PageInfoPreprocessor
   block_macro PageListBlockMacro
-  postprocessor DrawImagePostprocessor
+  postprocessor FilesPostprocessor
 
   #
   # # fix the draw.io image relative paths
