@@ -42,4 +42,4 @@ profiles:
     deploy: null
   production:
     base_url: https://mrduguo.github.io/adoc-site-builder
-    context_path: '/adoc-site-builder'
+    context_path: /adoc-site-builder
