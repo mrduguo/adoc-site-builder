@@ -30,7 +30,7 @@ module Awestruct
           sub_pages
               .sort_by{ |p|PageInfoPreprocessor.get_page_order_value(p.title) }
               .each do |p|
-                output+= "<li><a href='#{p.url}'>#{p.title}</a>"
+                output+= "<li><a href='#{site.base_url}#{p.url}'>#{p.title}</a>"
                 if includeChild
                   output+= page_list_with_site(site,p.url,includeChild)
                 end

@@ -40,22 +40,6 @@ slim|html:
 profiles:
   development:
     deploy: null
-    #show_drafts: false
-  staging:
-    deploy: null
-  travis:
+  production:
     base_url: https://mrduguo.github.io/adoc-site-builder
     context_path: '/adoc-site-builder'
-    scss:
-      :line_numbers: false
-      :style: :compressed
-    #compass_output_style: compressed
-    # TODO enable minify once we verify it's working as expected
-    #minify: true
-    deploy:
-      host: github_pages
-      branch: gh-pages
-  production:
-    deploy: null
-    base_url: /
-    context_path: ''

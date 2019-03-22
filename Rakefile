@@ -121,44 +121,6 @@ task :deploy => [:push, :check] do
   run_awestruct '-P production --deploy'
 end
 
-desc 'Generate site from Travis CI and, if not a pull request, publish site to production (GitHub Pages)'
-task :travis => :check do
-  # force use of bundle exec in Travis environment
-  $use_bundle_exec = true
-
-
-  # if this is a pull request, do a simple build of the site and stop
-  if ENV['TRAVIS_PULL_REQUEST'].to_s.to_i > 0
-    msg 'Pull request detected. Executing build only.'
-    run_awestruct '-P travis -g --force', :spawn => false
-    next
-  end
-
-  require 'yaml'
-  require 'fileutils'
-
-  # TODO use the Git library for these commands rather than system
-  # repo = %x(git config remote.origin.url).gsub(/^git:/, 'https:')
-  system "git remote set-url --push origin https://github.com/#{ENV['TRAVIS_REPO_SLUG']}.git"
-  system 'git remote set-branches --add origin gh-pages'
-  system 'git fetch -q'
-  # FIXME don't need to set user.name & user.email if we encrypt token using intended author's GitHub identity
-  system "git config user.name '#{ENV['GIT_N']}'"
-  system "git config user.email '#{ENV['GIT_E']}'"
-  system 'git config credential.helper "store --file=.git/credentials"'
-  # CREDENTIALS assigned by a Travis CI Secure Environment Variable
-  # see http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables for details
-  File.open('.git/credentials', 'w') {|f| f.write("https://#{ENV['GH_U']}:#{ENV['GH_T']}@github.com") }
-  set_pub_dates 'master'
-  system 'git branch gh-pages origin/gh-pages'
-  run_awestruct '-P travis -g --force -q', :spawn => false
-  IO.write '_site/.nojekyll', ''
-  #gen_rdoc
-  run_awestruct '-P travis --deploy', :spawn => false
-  File.delete '.git/credentials'
-  system 'git status'
-end
-
 desc "Assign publish dates to news entries"
 task :setpub do
   set_pub_dates 'master'
