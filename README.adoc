@@ -1,6 +1,6 @@
 = adoc-site-builder image:https://secure.travis-ci.org/mrduguo/adoc-site-builder.svg?branch=master["Build Status", link="https://travis-ci.org/mrduguo/adoc-site-builder"]
 
-A documentation system based on http://asciidoctor.org[Asciidoctor]. This project will publish an docker image which could be used to overlay with your documentation source code to generate a beautiful site.
+A documentation system based on http://asciidoctor.org[Asciidoctor]. This project will publish an docker image which could be used to overlay with your documentation source code to generate a simple and easy to navigate knowledge site.
 
 == Docker Hub Image
 
